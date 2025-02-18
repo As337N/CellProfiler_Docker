@@ -1,0 +1,16 @@
+services:
+  cellprofiler_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /data/Arsenio/CellProfiler_pipelines:/workspace
+      #- /data/Arsenio/Claudius_CPA_data/2024-11-26T111757+0100[20528]:/workspace_images
+      - /data/Arsenio/Claudius_CPA_data/C1P5c2_SPACE:/workspace_images
+    working_dir: /workspace
+    #command: >
+      # sh -c "chmod +x /workspace/Code/prepare_CP_illum_pipeline.sh &&
+      # /workspace/Code/prepare_CP_illum_pipeline.sh"
+    command: >
+       sh -c "chmod +x /workspace/Code/prepare_MPI_pipeline.sh &&
+       /workspace/Code/prepare_MPI_pipeline.sh"
